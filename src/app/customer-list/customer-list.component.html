@@ -1,0 +1,44 @@
+<h1>Customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers |async">
+      <td>{{ customer.id }}</td>
+      <td><a routerLink="/customer/{{ customer.id }}">{{ customer.name }}</a></td>
+      <td>{{ customer.email }}</td>
+    <td>{{ customer.phone }}</td>
+    <td>{{ customer.address }}</td>
+    </tr>
+  </tbody> 
+</table>
+
+<h2>Add Customer</h2>
+
+<form (submit)="onSubmit()">
+  <label>
+    Name:
+    <input type="text" [(ngModel)]="newCustomer.name" name="name">
+  </label>
+  <label>
+    Email:
+    <input type="email" [(ngModel)]="newCustomer.email" name="email">
+  </label>
+  <label>
+    Phone:
+    <input type="tel" [(ngModel)]="newCustomer.phone" name="phone">
+  </label>
+  <label>
+    Address:
+    <textarea [(ngModel)]="newCustomer.address" name="address"></textarea>
+  </label>
+  <button type="submit">Add Customer</button>
+</form>
